@@ -1,0 +1,199 @@
+List all thr shell script contents of the directory
+File: arrayex.sh
+comments.sh
+env.sh
+errors.sh
+expression.sh
+ifread.sh
+ifthenelse.sh
+loop.sh
+null.sh
+readsample.sh
+simpleif.sh
+substitution.sh
+testfile.sh
+test.sh
+varexample.sh - Contents #!/bin/bash
+
+# Simple array list and loop for desplay
+
+SERVERLIST=("websrv01" "websrv02" "websrv03" "websrv04")
+COUNT=0
+
+for INDEX in ${SERVERLIST[@]}; do 
+   echo "Processing Server: ${SERVERLIST[COUNT]}"
+   COUNT="`expr $COUNT + 1`"
+done
+#!/bin/bash
+
+
+# this is the describtion of the application
+
+clear # clear the terminal 
+
+MYUSER="sunny" # login user name  for this application
+
+echo "The user which is login to this application is: $MYUSER" # Display to console
+
+echo "shell script is running fine "
+
+#!/bin/bash
+
+clear
+
+echo "This script will give us the enviornment Information"
+echo "===================================================="
+echo ""
+echo "Hello username: $USER"
+echo ""
+echo "Your home Directory is $HOME"
+echo ""
+echo "Your History file will Ignore: $HISTCONTROL"
+echo ""
+echo "Your Terminal session type is $TERM"
+echo ""
+#!/bin/bash
+
+# this is to show exit status type
+set -e
+expr 1 + 5
+echo $?
+
+rm doodles.sh
+echo $?
+
+expr 10 + 10
+echo $?
+#!/bin/bash
+
+expr 2 + 2
+
+expr 2 + 2 \* 4
+
+expr \( 2 + 2 \) \* 4
+#!/bin/bash
+# test multiple expressions in single if statement
+
+FILENAME=$1
+
+echo "Testing foer file $FILENAME and readability"
+
+if [ -f $FILENAME ]  && [ -r $FILENAME ]
+  then
+    echo "File $FILENAME exists AND is readable"
+fi
+#!/bin/bash
+# simple example of if then else and nested if statement 
+
+clear
+echo "Enter a number between 1 and 3: "
+read VALUE
+
+if [ "$VALUE" -eq "1" ] 2>/dev/null; then
+  echo "Youi entered #1" 
+elif [ "$VALUE" -eq "2" ] 2>/dev/null; then
+  echo "You successfully entered #2"
+elif [ "$VALUE" -eq "3" ] 2>/dev/null; then
+  echo "You entered the 3rd number"
+else
+  echo "You didn't follow the directions! "
+fi
+#!/bin/bash
+# this is a demo of the for loop
+
+echo "List all thr shell script contents of the directory"
+
+SHELLSCRIPTS=`ls *.sh`
+
+for SCRIPT in "$SHELLSCRIPTS"; do
+  DISPLAY="`cat $SHELLSCRIPTS`"
+  echo "File: $SCRIPT - Contents $DISPLAY"
+done
+
+#!/bin/bash
+
+# redirect to /dev/null example
+
+
+echo "This is displaying on the console" 
+
+echo "This is going into the black hole"  >> /dev/null
+#!/bin/bash
+
+# interactive script for user input
+
+
+echo "Enter Your First Name"
+read FIRSTNAME
+echo "Enter Your Last Name"
+read LASTNAME
+
+echo ""
+echo "Your Full Name is $FIRSTNAME $LASTNAME"
+echo ""
+echo "Enter Your Age: "
+read USERAGE
+
+echo "In 10 Years, You will be `expr 10 + $USERAGE` years old."
+
+#!/bin/bash
+# simple if script for guessing a nummber
+
+echo "Guess the Secret Number"
+echo "======================="
+echo ""
+echo "Enter the Number between 1 and 5"
+read GUESS
+
+if [ $GUESS -eq 3 ]
+  then 
+    echo "You Guessed the Correct Number!"
+fi
+#!/bin/bash
+
+# This script is intented to show how to do simple substitution
+
+shopt -s expand_aliases
+
+alias TODAY="date"
+alias UFILES="find /home -user cloud_user"
+
+TODAYSDATE=`date`
+USERFILES=`find /home -user cloud_user`
+
+echo "Today's date is: $TODAYSDATE"
+echo "All file owned by USER: $USERFILES"
+
+A=`TODAY`
+b=`UFILES`
+
+echo "With Alias, Today is: $A"
+echo "With Alias, UFILES is: $b"
+#!/bin/bash
+# tests for existence of indicated file name
+
+FILENAME=$1
+echo "Testing for the Existence of a File called $FILENAME"
+
+if [ ! -f $FILENAME ]
+  then 
+    echo "FIle $FILENAME Does NOT Exist!"
+fi
+#!/bin/bash
+
+clear
+echo "Hello world"
+#!/bin/bash
+
+MYUSERNAME="username"
+MYPASSWORD="password"
+STARTOFSCRIPT=`date`
+
+echo "My login name for this application is: $MYUSERNAME"
+echo "My login password for this application is : $MYPASSWORD"
+echo "I started this application at: $STARTOFSCRIPT"
+
+sleep 10
+ENDOFSCRIPT=`date`
+
+echo "I ended this script at: $ENDOFSCRIPT"
